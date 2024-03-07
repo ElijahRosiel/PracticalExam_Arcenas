@@ -38,4 +38,61 @@ warpbreaks$tension <- as.integer(warpbreaks$tension)
 #To get an error I removed the ( between the sapply and warbreaks which closes the command input for sapply, But I was confused about the , and realised that the error is having problems with the open command thus focused on what symbol is next. Which makes sense in my opinion
 
 ```
+```{r}
+#B.Load the exampleFile.txt
+
+  file <- file("exampleFile.txt")
+  read <- readLines(file)
+  read
+
+```
+```{r}
+#2b
+ 
+com <- read[grepl("^//",read)]
+com
+
+vect <- read[!grepl("^//", read)]
+vect
+
+```
+
+```{r}
+#3b
+subsetCom <-com[1]
+date <- gsub("//Survey data. Created:","", subsetCom)
+date
+
+cat ("It was Created,",date)
+
+```
+
+```{r}
+
+vec_Split <- (strsplit(vect,";"))
+vec_Split
+
+
+```
+
+```{r}
+#4b
+max_vec <-max(length(vec_Split))
+max_vec
+
+appendRow <- lapply(vec_Split, function(x) c(x,rep(NA, max_vec - length(x))))
+appendRow
+
+
+```
+
+```{r}
+#B4c
+
+unlistdata <- unlist(appendRow)
+unlistdata
+
+dat_matrix <- matrix(unlistdata, ncol=4, nrow = 3,
+                     dimnames = list(c("row1","row2","row3")))
+dat_matrix
 
