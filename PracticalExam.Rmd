@@ -1,0 +1,41 @@
+---
+title: "Practical Exam 07/03/24"
+author: "Edora Frances Anne V Arcenas"
+date: "2024-03-06"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data(warpbreaks)
+```
+
+```{r}
+# 1.
+NumOrInt <- sapply(warpbreaks, function(x) is.numeric(x) | is.integer(x))
+NumOrInt
+
+#Base on the result of the NumOrInt, Breaks is Numberic, While the Wool and Tension are both integers.
+
+# 2.
+#The result of NumOrInt gave 3 observations which is "[1:3] TRUE FALSE FALSE", Which indicates the warpbreak's column break as numeric, wool and tension as integers.
+
+# 3.
+#If needed to convert into integer I would have this code running as the break is already determined as a numeric
+
+warpbreaks$wool <- as.integer(warpbreaks$wool)
+warpbreaks$tension <- as.integer(warpbreaks$tension)
+
+# 4.
+#Displayed Error: NumOrInt <- sapplywarpbreaks, function(x) is.numeric(x) | is.integer(x))
+#Error: unexpected ',' in "NumOrInt <- sapplywarpbreaks,"
+
+#To get an error I removed the ( between the sapply and warbreaks which closes the command input for sapply, But I was confused about the , and realised that the error is having problems with the open command thus focused on what symbol is next. Which makes sense in my opinion
+
+```
+
